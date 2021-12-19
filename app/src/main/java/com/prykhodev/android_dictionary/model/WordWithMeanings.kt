@@ -5,5 +5,4 @@ import androidx.room.Relation
 
 data class WordWithMeanings(
     @Embedded val word: Word,
-    @Relation(parentColumn = "id", entityColumn = "wordId") val meanings: List<Meaning> ) {
-}
+    @Relation(parentColumn = "id", entityColumn = "wordId") val meanings: List<Meaning> )

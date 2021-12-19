@@ -1,10 +1,9 @@
 package com.prykhodev.android_dictionary.ui.main.searchFragment
 
-import android.opengl.Visibility
-import com.prykhodev.android_dictionary.model.WordWithMeanings
-import com.prykhodev.android_dictionary.model.source.Repository
 import androidx.databinding.adapters.SearchViewBindingAdapter.OnQueryTextSubmit
 import androidx.lifecycle.*
+import com.prykhodev.android_dictionary.model.WordWithMeanings
+import com.prykhodev.android_dictionary.model.source.Repository
 import kotlinx.coroutines.launch
 
 class SearchViewModel(private val repository: Repository) : ViewModel() {
