@@ -1,8 +1,9 @@
-package com.prykhodev.android_dictionary
+package com.prykhodev.android_dictionary.ui.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.prykhodev.android_dictionary.ui.main.MainFragment
+import com.prykhodev.android_dictionary.R
+import com.prykhodev.android_dictionary.ui.main.searchFragment.SearchFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -11,7 +12,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.main_activity)
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.container, MainFragment.newInstance())
+                .replace(R.id.container, SearchFragment.newInstance())
                 .commitNow()
         }
     }

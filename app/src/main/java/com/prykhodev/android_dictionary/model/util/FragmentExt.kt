@@ -6,7 +6,7 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.prykhodev.android_dictionary.App
-import com.prykhodev.android_dictionary.ui.main.MainViewModel
+import com.prykhodev.android_dictionary.ui.main.searchFragment.SearchViewModel
 
 @Suppress("UNCHECKED_CAST")
 fun Fragment.getViewModelFactory(): ViewModelProvider.Factory {
@@ -18,8 +18,8 @@ fun Fragment.getViewModelFactory(): ViewModelProvider.Factory {
             handle: SavedStateHandle
         ) = with(modelClass){
             when{
-                isAssignableFrom(MainViewModel::class.java) ->
-                    MainViewModel(repository)
+                isAssignableFrom(SearchViewModel::class.java) ->
+                    SearchViewModel(repository)
                 else ->
                     throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
             }
