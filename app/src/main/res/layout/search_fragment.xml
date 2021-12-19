@@ -42,7 +42,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Title"
-                android:text="@{viewModel.wordWithMeanings.word.value}"
+                android:text="@{viewModel.wordWithMeanings.word.word}"
                 tools:text="[Word]" />
 
             <TextView

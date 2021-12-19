@@ -5,6 +5,8 @@ import androidx.room.Room
 import com.prykhodev.android_dictionary.model.source.Repository
 import com.prykhodev.android_dictionary.model.source.local.LocalDataSource
 import com.prykhodev.android_dictionary.model.source.local.LocalDatabase
+import com.prykhodev.android_dictionary.model.source.remote.DictionaryApi
+import com.prykhodev.android_dictionary.model.source.remote.DictionaryApiHelper
 import com.prykhodev.android_dictionary.model.source.remote.RemoteDataSource
 
 object ServiceProvider {
@@ -32,11 +34,15 @@ object ServiceProvider {
     }
 
     private fun provideRemoteDataSource() =
-        remoteDataSource ?: synchronized(this) { remoteDataSource ?: RemoteDataSource() }
+        remoteDataSource ?: synchronized(this) {
+            remoteDataSource ?: RemoteDataSource(
+                DictionaryApiHelper.instance.create(DictionaryApi::class.java)
+            )
+        }
 
     private fun provideLocalDataSource(db: LocalDatabase) =
         localDataSource ?: synchronized(this){
-            localDataSource ?: LocalDataSource(db.wordsDao(), db.meaningsDao())
+            localDataSource ?: LocalDataSource(db.wordsDao())
         }
 
     private fun provideDatabase(context: Context) = database ?:synchronized(context){
