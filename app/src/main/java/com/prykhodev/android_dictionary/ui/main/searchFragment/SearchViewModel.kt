@@ -1,20 +1,21 @@
 package com.prykhodev.android_dictionary.ui.main.searchFragment
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import android.opengl.Visibility
 import com.prykhodev.android_dictionary.model.WordWithMeanings
 import com.prykhodev.android_dictionary.model.source.Repository
 import androidx.databinding.adapters.SearchViewBindingAdapter.OnQueryTextSubmit
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import kotlinx.coroutines.launch
 
 class SearchViewModel(private val repository: Repository) : ViewModel() {
     private val _wordWithMeanings = MutableLiveData<WordWithMeanings?>()
     val wordWithMeanings: LiveData<WordWithMeanings?> = _wordWithMeanings
 
+    val textVisibility : LiveData<Boolean> = _wordWithMeanings.map { it != null }
+
     val onQueryTextSubmit get() = OnQueryTextSubmit {
         viewModelScope.launch {
             _wordWithMeanings.value = repository.searchWord(it) }
-    true}
+        return@OnQueryTextSubmit true}
+
 }
