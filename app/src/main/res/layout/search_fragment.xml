@@ -82,6 +82,7 @@
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/word_title"
+            android:visibility="@{viewModel.textVisibility ? View.VISIBLE: View.GONE}"
             app:items="@{viewModel.wordWithMeanings.meanings}"
             tools:listitem="@layout/meaning_item"/>
 
