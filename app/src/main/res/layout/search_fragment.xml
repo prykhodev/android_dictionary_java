@@ -24,7 +24,7 @@
             android:layout_marginTop="5dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:onQueryTextSubmit="@{viewModel.onQueryTextSubmit}"/>
+            android:onQueryTextSubmit="@{viewModel.onQueryTextSubmit()}"/>
 
         <LinearLayout
             android:id="@+id/word_title"
@@ -47,30 +47,37 @@
                 android:text="@{viewModel.wordWithMeanings.word.word}"
                 tools:text="[Word]" />
 
-            <TextView
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:text=" ["
-                tools:ignore="HardcodedText" />
+                android:visibility="@{viewModel.wordWithMeanings.word.phonetic.isEmpty() ? View.GONE : View.VISIBLE}">
 
-            <TextView
-                android:id="@+id/phonetic"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:text="@{viewModel.wordWithMeanings.word.phonetic}"
-                tools:text="[phonetic]" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:text=" ["
+                    tools:ignore="HardcodedText" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:text="]"
-                tools:ignore="HardcodedText" />
+                <TextView
+                    android:id="@+id/phonetic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:text="@{viewModel.wordWithMeanings.word.phonetic}"
+                    tools:text="[phonetic]" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:text="]"
+                    tools:ignore="HardcodedText" />
+
+            </LinearLayout>
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView

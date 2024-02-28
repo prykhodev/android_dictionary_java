@@ -7,7 +7,7 @@ import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-class RemoteDataSource internal constructor(
+class RemoteDataSource @JvmOverloads internal constructor(
     private val dictionaryApi: DictionaryApi,
     private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO) {
     suspend fun getWordWithMeanings(query: String) : WordWithMeanings? =

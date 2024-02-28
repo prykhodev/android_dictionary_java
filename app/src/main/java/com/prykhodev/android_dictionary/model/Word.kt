@@ -12,6 +12,6 @@ data class Word @JvmOverloads constructor(
     @ColumnInfo val phonetic: String = "") {
     constructor(serializableWord: SerializableWord): this(
         word = serializableWord.word,
-        phonetic = serializableWord.phonetic
+        phonetic = serializableWord.phonetic?: ""
     )
 }

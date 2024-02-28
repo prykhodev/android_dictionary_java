@@ -5,7 +5,7 @@ import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-class LocalDataSource internal constructor(
+class LocalDataSource @JvmOverloads internal constructor(
     private val wordsDao: WordsDao,
     private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO) {
 
